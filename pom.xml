@@ -12,11 +12,11 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jdk.version>1.8</jdk.version>
 		<jsf.version>2.2.13	</jsf.version>
-		<primefaces.version>5.1</primefaces.version>
+		<primefaces.version>6.1</primefaces.version>
 		<springboot.version>1.3.3.RELEASE</springboot.version>
-		<servlet.version>3.1.0</servlet.version>		
+		<servlet.version>3.1.0</servlet.version>
 		<javax.version>1.2</javax.version>
-		
+
 	</properties>
 
 	<repositories>
@@ -28,7 +28,7 @@
 	</repositories>
 
 	<dependencies>
-		
+
 		<!-- Sun faces -->
 		<dependency>
 			<groupId>com.sun.faces</groupId>
@@ -40,19 +40,26 @@
 			<artifactId>jsf-impl</artifactId>
 			<version>${jsf.version}</version>
 		</dependency>
-<!-- 		<dependency> -->
-<!-- 			<groupId>com.sun.el</groupId> -->
-<!-- 			<artifactId>el-ri</artifactId> -->
-<!-- 			<version>1.0</version> -->
-<!-- 		</dependency> -->
-		
+		<!-- <dependency> -->
+		<!-- <groupId>com.sun.el</groupId> -->
+		<!-- <artifactId>el-ri</artifactId> -->
+		<!-- <version>1.0</version> -->
+		<!-- </dependency> -->
+
 		<!-- PrimeFaces -->
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
 			<version>${primefaces.version}</version>
 		</dependency>
-		
+
+		<dependency>
+			<groupId>org.primefaces.themes</groupId>
+			<artifactId>all-themes</artifactId>
+			<version>1.0.10</version>
+		</dependency>
+
+
 		<!-- JAVAX -->
 		<dependency>
 			<groupId>javax.enterprise</groupId>
@@ -60,8 +67,8 @@
 			<version>${javax.version}</version>
 			<scope>provided</scope>
 		</dependency>
-		
-		<!-- Spring -->		
+
+		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -72,14 +79,14 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 			<version>${springboot.version}</version>
-		</dependency>		
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<version>${springboot.version}</version>
 			<scope>provided</scope>
 		</dependency>
-		
+
 		<!-- Log4J -->
 		<dependency>
 			<groupId>log4j</groupId>
@@ -87,12 +94,19 @@
 			<version>1.2.17</version>
 			<type>jar</type>
 		</dependency>
-		
+
 		<!-- MySQL -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.14</version>
+		</dependency>
+
+		<!-- El for tomcat -->
+		<dependency>
+			<groupId>com.sun.el</groupId>
+			<artifactId>el-ri</artifactId>
+			<version>1.0</version>
 		</dependency>
 	</dependencies>
 

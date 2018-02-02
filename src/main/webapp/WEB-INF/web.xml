@@ -5,13 +5,7 @@
     http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	id="WebApp_ID" version="3.0">
 	<display-name>DDSis</display-name>
-	
-	<context-param>
-		<param-name>primefaces.THEME</param-name>
-		<param-value>aristo</param-value>
-	</context-param>
-	
-	
+
 	<welcome-file-list>
 		<welcome-file>customLogin.xhtml</welcome-file>
 	</welcome-file-list>
@@ -28,8 +22,11 @@
 		<servlet-name>FacesServlet</servlet-name>
 		<url-pattern>*.jpg</url-pattern>
 	</servlet-mapping>
-	
-	
+
+	<context-param>
+		<param-name>primefaces.THEME</param-name>
+		<param-value>#{themeBean.applicationTheme}</param-value>
+	</context-param>
 
 	<resource-ref>
 		<description>DB Connection</description>
