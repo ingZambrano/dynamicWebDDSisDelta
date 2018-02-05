@@ -1,34 +1,54 @@
 package mx.com.ddis.service;
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.sql.SQLException;
 import java.util.List;
+
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 
-import mx.com.ddsis.model.Student;
+
+import mx.com.ddsis.dao.DispositivosDao;
+import mx.com.ddsis.model.CatDispositivos;
+import mx.com.ddsis.model.CatMagnitudes;
+import mx.com.ddsis.model.RegistroMedidas;
+
 @ManagedBean(name = "dispositivosService")
 @ApplicationScoped
 public class DispositivosService implements Serializable {
 	
-	@ManagedProperty("#{conService}")
-    private ConnService conservice;
+	@ManagedProperty("#{dispositivosDao}")
+    private DispositivosDao dispositivosDao;
 	
 	
 	private static final long serialVersionUID = 1L;
-	static List<Student> list = new ArrayList<Student>();
-	static{
-		for (int i= 1; i<=100; i++){
-			list.add(new Student(i, "Student-"+i, "Location-"+i));
-		}
-	}
-	public List<Student> getStudents(){		
+	
+	public List<CatDispositivos> dameDispositivos() throws SQLException{
 		
-		return list;
+		return dispositivosDao.dameDispositivos();
+		
 	}
-	public void setConservice(ConnService conservice) {
-		this.conservice = conservice;
+
+	public List<CatMagnitudes> dameMagnitudesPorDisp(String idDispositivo) throws SQLException{
+		return dispositivosDao.dameMagnitudesPorDisp(idDispositivo);
 	}
+	
+	public List<RegistroMedidas> dameRegistroMedidasPorDisp(String idDispositivo, int idMagnitud)  throws SQLException{
+		return dispositivosDao.dameRegistroMedidasPorDispUnidad(idDispositivo, idMagnitud);
+	}
+	public RegistroMedidas dameMedicionesPorUnidad(String idDispositivo, int idMagnitud) throws SQLException{
+		return dispositivosDao.dameMedicionesPorUnidad(idDispositivo, idMagnitud);
+	}
+	
+	
+	public void setDispositivosDao(DispositivosDao dispositivosDao) {
+		this.dispositivosDao = dispositivosDao;
+	}
+	
+	
+	
+	
+	
 	
 	
 }

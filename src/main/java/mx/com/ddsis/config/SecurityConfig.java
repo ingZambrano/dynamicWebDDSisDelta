@@ -10,14 +10,14 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().
+		http.csrf().disable().authorizeRequests().
 		antMatchers("/secure/**").access("hasRole('ROLE_ADMIN')").
 		and().formLogin().  //login configuration
         loginPage("/customLogin.xhtml").
         loginProcessingUrl("/appLogin").
         usernameParameter("app_username").
         passwordParameter("app_password").
-        defaultSuccessUrl("/secure/menu.xhtml").	
+        defaultSuccessUrl("/secure/views/main.xhtml").	
 		and().logout().    //logout configuration
 		logoutUrl("/appLogout"). 
 		logoutSuccessUrl("/customLogin.xhtml");

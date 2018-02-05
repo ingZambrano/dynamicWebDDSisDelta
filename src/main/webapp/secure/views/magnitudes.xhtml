@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<body>
+
+	<ui:composition template="../templates/plantilla.xhtml">		
+		
+		<ui:define name="content">		
+			<h:form id="formMain"> 					
+			
+			
+			<p:poll interval="20" listener="#{mainController.increment}" />
+			<p:dataGrid var="mag" value="#{mainController.listMagnitudesMedidas}"
+				columns="2" layout="grid" rows="12" paginator="true" id="mag">
+
+				<f:facet name="header">
+            		Magnitudes Medidas        		
+        		</f:facet>
+
+				<p:panel header="#{mag.nombreMagnitud}" style="text-align:center">
+					<h:panelGrid columns="1" style="width:100%" id="datosMag">
+						<h:outputText value="#{mag.valorMedido} #{mag.unidadDeMedida} " />
+						<h:outputText value="#{mag.fhMedida}">
+							 <f:convertDateTime type="date"  pattern="dd/MM/yyyy HH:mm:ss" />
+						</h:outputText>
+						<p:commandButton id="detalles" value="Ver Detalle" 
+						 	actionListener="#{mainController.mostrarDetalle(mag.idMagnitud)}"/>
+					</h:panelGrid>
+				</p:panel>
+
+			</p:dataGrid>
+			
+			
+			<p:dialog id="dlg1" header="Detalle" widgetVar="dlg1" modal="true">
+				<h:form>
+			    <p:dataTable id="tbl" var="det" value="#{mainController.listRegistrosMedidas}"
+                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                 paginator="true" rows="10" style="margin-bottom:20px; width:600px;">
+                 	 <p:column>
+			            <f:facet name="header">
+			                <h:outputText value="Fecha Sensada" />
+			            </f:facet>
+			            <h:outputText value="#{det.fhSensada}" >
+			            	<f:convertDateTime type="date"  pattern="dd/MM/yyyy HH:mm:ss" />
+			            </h:outputText>
+			            
+			        </p:column>
+			        <p:column>
+			            <f:facet name="header">
+			                <h:outputText value="Valor" />
+			            </f:facet>
+			            <h:outputText value="#{det.valorMagnitud}" />
+			            
+			        </p:column>
+			        <p:column>
+			            <f:facet name="header">
+			                <h:outputText value="Unidad de Medida" />
+			            </f:facet>
+			            <h:outputText value="#{det.unidadMedida}" />
+			            
+			        </p:column>
+                 </p:dataTable>
+                 </h:form>
+			</p:dialog>
+			
+			 
+			</h:form>
+		</ui:define>
+
+	</ui:composition>
+
+</body>
+</html>

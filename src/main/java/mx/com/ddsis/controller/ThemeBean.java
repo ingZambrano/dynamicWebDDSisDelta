@@ -9,7 +9,7 @@ import javax.faces.bean.ManagedBean;
 public class ThemeBean {
 
     public String getApplicationTheme() {
-        return "aristo";
+        return "cupertino";
     }
 
 }

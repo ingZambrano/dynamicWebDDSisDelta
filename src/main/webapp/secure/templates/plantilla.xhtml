@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<h:outputStylesheet name="/css/default.css" />
+	<h:outputStylesheet name="/css/cssLayout.css" />
+	<title>Cocinas Delta</title>
+</h:head>
+
+<h:body>
+	
+	<div id="top">
+		<ui:insert name="top"></ui:insert>
+		<div id="menuBar">
+			<h:form>
+				<p:growl id="messages" />				
+				<h:panelGrid columns="2">
+					<p:graphicImage name="images/ddsis.png" />
+					<p:outputLabel id="nombre_empresa" value="Cocinas Delta"
+					 style="font-family:serif;
+							font-weight: bold;
+							font-style: normal;
+							font-size: 60px;
+							position: relative;
+							margin-left: 100px;" />
+				</h:panelGrid>
+				<p:menubar>
+					<p:submenu label="Archivo" icon="ui-icon-document">						
+						<p:menuitem value="Ir a Inicio" url="main.xhtml" />														
+						
+					</p:submenu>
+
+
+				</p:menubar>
+			</h:form>
+		</div>
+	</div>
+
+	<div id="left">
+		<ui:insert name="left">
+			<h:form>
+				
+				<p:menu toggleable="true">
+					<p:submenu label="Cocina Delta" >						
+							 <p:menuitem value="Dispositivos" url="magnitudes.xhtml" />
+					</p:submenu>					
+				</p:menu>
+			</h:form>
+		</ui:insert>
+	</div>
+	<div id="content" class="right_content">
+		<ui:insert name="content"></ui:insert>
+	</div>
+
+</h:body>
+
+</html>

@@ -1,10 +1,11 @@
 package mx.com.ddis.service;
 
 import java.io.Serializable;
+import java.sql.CallableStatement;
 import java.sql.Connection;
-
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
@@ -36,6 +37,24 @@ public class ConnService implements Serializable{
 		
 		return conn;
 		
+	}
+	
+	public void closeConnection(Connection conn,
+			PreparedStatement pstmt, ResultSet rs, CallableStatement call) throws SQLException{
+
+		if (pstmt != null) {
+			pstmt.close();
+		}
+		if (rs != null) {
+			rs.close();
+		}
+		if (conn != null) {
+			conn.close();
+		}
+		if (call != null) {
+			call.close();
+		}
+
 	}
 
 }
