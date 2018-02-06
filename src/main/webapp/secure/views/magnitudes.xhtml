@@ -25,9 +25,7 @@
 				<p:panel header="#{mag.nombreMagnitud}" style="text-align:center">
 					<h:panelGrid columns="1" style="width:100%" id="datosMag">
 						<h:outputText value="#{mag.valorMedido} #{mag.unidadDeMedida} " />
-						<h:outputText value="#{mag.fhMedida}">
-							 <f:convertDateTime type="date"  pattern="dd/MM/yyyy HH:mm:ss" />
-						</h:outputText>
+						<h:outputText value="#{mag.fhMedidaString}"/>							 
 						<p:commandButton id="detalles" value="Ver Detalle" 
 						 	actionListener="#{mainController.mostrarDetalle(mag.idMagnitud)}"/>
 					</h:panelGrid>
@@ -45,9 +43,7 @@
 			            <f:facet name="header">
 			                <h:outputText value="Fecha Sensada" />
 			            </f:facet>
-			            <h:outputText value="#{det.fhSensada}" >
-			            	<f:convertDateTime type="date"  pattern="dd/MM/yyyy HH:mm:ss" />
-			            </h:outputText>
+			            <h:outputText value="#{det.fhSensadaString}"/>
 			            
 			        </p:column>
 			        <p:column>

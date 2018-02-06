@@ -14,6 +14,7 @@ public class RegistroMedidas implements Serializable{
 	private String valorMagnitud;
 	private String unidadMedida;
 	private int idMagnitud;
+	private String fhSensadaString;
 	
 	
 	public String getNombreDispositivo() {
@@ -57,6 +58,12 @@ public class RegistroMedidas implements Serializable{
 	}
 	public void setIdMagnitud(int idMagnitud) {
 		this.idMagnitud = idMagnitud;
+	}
+	public String getFhSensadaString() {
+		return fhSensadaString;
+	}
+	public void setFhSensadaString(String fhSensadaString) {
+		this.fhSensadaString = fhSensadaString;
 	}
 	
 	

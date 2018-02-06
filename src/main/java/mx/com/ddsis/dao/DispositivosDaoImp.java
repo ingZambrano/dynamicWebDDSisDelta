@@ -4,9 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import javax.faces.bean.ApplicationScoped;
@@ -25,6 +25,8 @@ import mx.com.ddsis.model.RegistroMedidas;
 public class DispositivosDaoImp implements DispositivosDao {
 	
 	private final static Logger logger = Logger.getLogger(DispositivosDaoImp.class);
+	
+	private final static DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 	
 	@ManagedProperty("#{conService}")
     private ConnService conservice;
@@ -136,10 +138,11 @@ public class DispositivosDaoImp implements DispositivosDao {
                 regMed.setNombreDispositivo(rs.getString("NOMBRE_DISPOSITIVO"));
                 regMed.setNombreMagnitud(rs.getString("NOMBRE_MAGNITUD"));
                 regMed.setFhRegistro(rs.getTimestamp("FH_REGISTRO"));
-                regMed.setFhSensada(this.sumarRestarHorasFecha(rs.getTimestamp("FH_SENSADA"),-6));
+                regMed.setFhSensada(rs.getTimestamp("FH_SENSADA"));
                 regMed.setValorMagnitud(rs.getString("VALOR_MAGNITUD"));
                 regMed.setUnidadMedida(rs.getString("UNIDAD_MEDIDA"));
                 regMed.setIdMagnitud(rs.getInt("ID_MAGNITUD"));
+                regMed.setFhSensadaString(df.format(rs.getTimestamp("FH_SENSADA")));
                 ret.add(regMed);
             }
 
@@ -184,11 +187,11 @@ public class DispositivosDaoImp implements DispositivosDao {
                 ret.setNombreDispositivo(rs.getString("NOMBRE_DISPOSITIVO"));
                 ret.setNombreMagnitud(rs.getString("NOMBRE_MAGNITUD"));
                 ret.setFhRegistro(rs.getTimestamp("FH_REGISTRO"));
-                ret.setFhSensada(this.sumarRestarHorasFecha(rs.getTimestamp("FH_SENSADA"),-6));
+                ret.setFhSensada(rs.getTimestamp("FH_SENSADA"));
                 ret.setValorMagnitud(rs.getString("VALOR_MAGNITUD"));
                 ret.setUnidadMedida(rs.getString("UNIDAD_MEDIDA"));
                 ret.setIdMagnitud(rs.getInt("ID_MAGNITUD"));
-             
+                ret.setFhSensadaString(df.format(rs.getTimestamp("FH_SENSADA")));
             }
 
         } catch (SQLException e) {
@@ -202,15 +205,7 @@ public class DispositivosDaoImp implements DispositivosDao {
 
 	}
 	
-	private Date sumarRestarHorasFecha(Date fecha, int horas){				 
-			
-		      Calendar calendar = Calendar.getInstance();			
-		      calendar.setTime(fecha); // Configuramos la fecha que se recibe			
-		      calendar.add(Calendar.HOUR, horas);  // numero de horas a añadir, o restar en caso de horas<0	
-		      return calendar.getTime(); // Devuelve el objeto Date con las nuevas horas añadidas		
-		 
-		
-		 }
+	
 	
 	public void setConservice(ConnService conservice) {
 		this.conservice = conservice;

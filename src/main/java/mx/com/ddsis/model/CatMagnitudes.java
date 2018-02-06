@@ -12,6 +12,7 @@ public class CatMagnitudes implements Serializable{
 	private Date fhMedida;
 	private String valorMedido;
 	private String unidadDeMedida;
+	private String fhMedidaString;
 	
 	
 	public int getIdMagnitud() {
@@ -43,6 +44,12 @@ public class CatMagnitudes implements Serializable{
 	}
 	public void setUnidadDeMedida(String unidadDeMedida) {
 		this.unidadDeMedida = unidadDeMedida;
+	}
+	public String getFhMedidaString() {
+		return fhMedidaString;
+	}
+	public void setFhMedidaString(String fhMedidaString) {
+		this.fhMedidaString = fhMedidaString;
 	}
 	
 	

@@ -64,6 +64,7 @@ public class MainController implements Serializable {
 				cM.setNombreMagnitud(regMed.getNombreMagnitud());
 				cM.setUnidadDeMedida(regMed.getUnidadMedida());
 				cM.setValorMedido(regMed.getValorMagnitud());
+				cM.setFhMedidaString(regMed.getFhSensadaString());
 			}			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
